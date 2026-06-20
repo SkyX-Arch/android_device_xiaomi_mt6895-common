@@ -1,0 +1,2 @@
+# Allow CachedAppOptimizer to search /proc/irq
+allow system_server proc_irq:dir search;
