@@ -17,39 +17,6 @@ This repository contains shared platform-specific configuration, policies, and r
 
 This repository provides common components shared across MT6895-based devices, reducing duplication between device trees and simplifying maintenance.
 
-## Repository Contents
-
-### SELinux
-
-* Platform SEPolicy rules
-* File contexts
-* Property contexts
-* Service contexts
-* Vendor compatibility policies
-
-### System Configuration
-
-* Init scripts
-* Framework overlays
-* Permissions
-* System properties
-* Feature configuration
-
-### Platform Components
-
-* Power configuration
-* Display configuration
-* Audio configuration
-* Media configuration
-* Hardware service integration
-
-### Compatibility Fixes
-
-* Android platform compatibility adjustments
-* MediaTek-specific workarounds
-* Platform stability improvements
-* Security policy updates
-
 ## Supported Android Versions
 
 * Android 16
