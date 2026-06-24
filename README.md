@@ -23,7 +23,7 @@ This repository provides common components shared across MT6895-based devices, r
 
 ## Used By
 
-* Xiaomi 12T (plato)
+* [Xiaomi 12T (plato)](https://github.com/SkyX-Arch/android_device_xiaomi_plato)
 
 ## Status
 
