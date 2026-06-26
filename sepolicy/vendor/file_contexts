@@ -160,3 +160,12 @@
 
 # Vibrator
 /vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service                   u:object_r:hal_vibrator_default_exec:s0
+
+# PQ
+/(vendor|system/vendor)/data/model(/.*)?                       u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/nn(/.*)?                           u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/mtk_platform_codecs_whitelist\.xml u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/csd_model\.tflite                  u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/barrage_v3\.tflite                 u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/modem/signal\.tflite               u:object_r:vendor_configs_file:s0
+/(vendor|system/vendor)/etc/modem/game\.tflite                 u:object_r:vendor_configs_file:s0

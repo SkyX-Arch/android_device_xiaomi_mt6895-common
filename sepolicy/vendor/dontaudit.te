@@ -11,3 +11,4 @@ dontaudit vold persist_data_file:dir read;
 dontaudit vendor_init vendor_userdir_file:dir write;
 dontaudit vendor_init default_prop:property_service set;
 dontaudit audioserver vendor_default_prop:file read;
+dontaudit mtk_hal_camera default_prop:file read;
