@@ -124,7 +124,6 @@
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.atms@1\.[0-9]\.so    u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.isphal@1\.[0-9]\.so  u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.mtkpower@1\.[0-9]\.so        u:object_r:same_process_hal_file:s0
-/bin/crossbuild(/.*)?                                                     u:object_r:crossbuild_vendor_file:s0
 
 # Fingerprint
 /data/vendor/fpc(/.*)?                                                    u:object_r:fingerprint_vendor_data_file:s0
@@ -173,11 +172,3 @@
 /system_ext/app/CameraMind(/.*)?                               u:object_r:system_file:s0
 /system_ext/app/CameraMind/CameraMind\.apk                     u:object_r:system_file:s0
 
-
-# APU / NPU device nodes (MediaTek AI Processing Unit)
-/dev/apusys_ctrl(/.*)?               u:object_r:apusys_device:s0
-/dev/apusys_mdla(/.*)?               u:object_r:apusys_device:s0
-/dev/apusys_sc(/.*)?                 u:object_r:apusys_device:s0
-/dev/apusys_rv(/.*)?                 u:object_r:apusys_device:s0
-/dev/apusys_iommu_env(/.*)?          u:object_r:apusys_device:s0
-/dev/neuron(/.*)?                    u:object_r:apusys_device:s0
