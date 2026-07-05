@@ -1,0 +1,11 @@
+# ========================================================
+# ANDROID 16 CUSTOM DISPLAY CALIBRATION POLICIES (PLATO)
+# ========================================================
+type hal_aal_default, domain;
+# Allow AAL daemon to read custom ams_aal_config.xml tables
+allow hal_aal_default vendor_display_config_file:file r_file_perms;
+
+# Allow AAL service to interact with Xiaomi displayfeature sysfs nodes
+allow hal_aal_default vendor_sysfs_displayfeature:dir r_dir_perms;
+allow hal_aal_default vendor_sysfs_displayfeature:file r_file_perms;
+

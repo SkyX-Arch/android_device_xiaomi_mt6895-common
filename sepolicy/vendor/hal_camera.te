@@ -1,9 +1,10 @@
-# Свойства камеры (Запись)
+binder_call(hal_camera_default, platform_app)
+# Camera Properties (Recording)
 set_prop(hal_camera_default, vendor_camera_p3enable_prop)
 set_prop(hal_camera_default, vendor_camera_sensor_prop)
 set_prop(hal_camera_default, vendor_camera_xdrversion_prop)
 
-# Свойства камеры (Чтение)
+# Camera Properties (Reading)
 get_prop(hal_camera_default, vendor_camera_sensor_prop)
 get_prop(hal_camera_default, bpf_progs_loaded_prop)
 
@@ -53,8 +54,12 @@ allow hal_camera_default vendor_bsp_data_log_file:dir r_dir_perms;
 allow hal_camera_default vendor_bsp_data_log_file:file r_file_perms;
 
 # Service manager lookup for platform_app (MiuiCamera)
-# Права на поиск сервисов (find) разрешены, а прямой доступ к файлам данных вендора — удален
 allow platform_app hal_aidlbgservice_service:service_manager find;
 allow platform_app hal_misys_service:service_manager find;
 allow platform_app hal_campostproc_service:service_manager find;
 allow platform_app hal_quickcamera_service:service_manager find;
+
+
+binder_call(hal_camera_default, platform_app)
+r_dir_file(platform_app, vendor_configs_file)
+

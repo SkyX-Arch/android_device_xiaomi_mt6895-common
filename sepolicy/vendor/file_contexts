@@ -125,6 +125,7 @@
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.isphal@1\.[0-9]\.so  u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.mtkpower@1\.[0-9]\.so        u:object_r:same_process_hal_file:s0
 /bin/crossbuild(/.*)?                                                     u:object_r:crossbuild_vendor_file:s0
+/vendor/etc/ams_aal_config\.xml                                           u:object_r:vendor_display_config_file:s0
 
 # Fingerprint
 /data/vendor/fpc(/.*)?                                                    u:object_r:fingerprint_vendor_data_file:s0
@@ -170,8 +171,6 @@
 /(vendor|system/vendor)/etc/barrage_v3\.tflite                 u:object_r:vendor_configs_file:s0
 /(vendor|system/vendor)/etc/modem/signal\.tflite               u:object_r:vendor_configs_file:s0
 /(vendor|system/vendor)/etc/modem/game\.tflite                 u:object_r:vendor_configs_file:s0
-/system_ext/app/CameraMind(/.*)?                               u:object_r:system_file:s0
-/system_ext/app/CameraMind/CameraMind\.apk                     u:object_r:system_file:s0
 
 
 # APU / NPU device nodes (MediaTek AI Processing Unit)
@@ -181,3 +180,72 @@
 /dev/apusys_rv(/.*)?                 u:object_r:apusys_device:s0
 /dev/apusys_iommu_env(/.*)?          u:object_r:apusys_device:s0
 /dev/neuron(/.*)?                    u:object_r:apusys_device:s0
+
+
+# === Проприетарные плагины и алгоритмы обработки Xiaomi ===
+/vendor/lib(64)?/lib3a\.ae\.pipe\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/lib3a\.cculog\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libaaa_gma\.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libBasicModule\.so                                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcam\.hal3a\.guard\.so                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcamalgo\..*\.so                                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcamera_scene\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameradngimpl\.so                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameraimpl\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameramind\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameraopt\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameraopt_jni\.so                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcameraplatforminfoxiaomi\.so                          u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcammsger\.so                                          u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libceres\.so                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libdeflicker\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libfeaturepolicy(_dbhandler)?\.so                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libfeature\.hdr10\.so                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libheichal\.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libimagebuffer_wrapper\.so                               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmialgo_.*\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmibokeh_845_video\.so                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libminiui\.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmisight\.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmtkcam_3rdcalibration\.so                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmtkcam_fdWarpConvert\.so                              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmtkcam_thirdparty\.customzone\.so                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmtkisp_metadata_v2\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libopencl-camera\.so                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libremosaic_wrapper\.so                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libssccalapi\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libvideofilter_only\.so                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libvidhance.*\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libvirtualcamera_.*_jni\.so                              u:object_r:same_process_hal_file:s0
+
+# === Стабилизация изображения (PQ) ===
+/vendor/lib(64)?/libai_pq\.so                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libai_sdr2hdr(_auth)?\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libAITrackingAFMgr\.so                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libappgamepq\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libjni_pq\.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPQ(DC)?jni\.so                                        u:object_r:same_process_hal_file:s0
+
+# === Интерфейсы MediaTek (HIDL/AIDL Биндинги) ===
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.atms-V1-ndk\.so       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.bgservice@1\.[0-9]\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.ccap@1\.[0-9]\.so     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.device@3\.[0-9]\.so   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.frhandler@1\.[0-9]\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.isphal-V1-ndk\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.postproc@1\.[0-9]\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.security@1\.[0-9]\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.pq_aidl-V2-ndk\.so           u:object_r:same_process_hal_file:s0
+
+# === Собственные интерфейсы Xiaomi (Vendor HIDL) ===
+/vendor/lib(64)?/vendor\.xiaomi\.hardware\.campostproc@1\.[0-9]\.so       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.xiaomi\.hardware\.misys@.*\.so                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.xiaomi\.hardware\.quickcamera-V1-ndk\.so          u:object_r:same_process_hal_file:s0
+
+# Реализация ISP HAL от MediaTek
+/vendor/lib(64)?/hw/vendor\.mediatek\.hardware\.camera\.isphal@1\.1-impl\.so u:object_r:vendor_file:s0
+
+# Реализации сервисов Xiaomi (MiSys, DisplayFeature)
+/vendor/lib(64)?/hw/vendor\.xiaomi\.hardware\.misys@.*-impl\.so             u:object_r:vendor_file:s0
+/vendor/lib(64)?/hw/vendor\.xiaomi\.hardware\.displayfeature@.*-impl\.so    u:object_r:vendor_file:s0
+/vendor/lib(64)?/hw/displayfeature\.default\.so                             u:object_r:vendor_file:s0
