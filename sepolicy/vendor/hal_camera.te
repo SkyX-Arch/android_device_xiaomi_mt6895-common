@@ -28,6 +28,7 @@ allow hal_camera_client hal_quickcamera_service:service_manager find;
 
 # Symlinks in /vendor
 allow hal_camera_default vendor_file:lnk_file r_file_perms;
+allow hal_camera_default vendor_configs_file:file r_file_perms;
 
 # Thermal management
 allow hal_camera_default sys_thermal_flash_state:file r_file_perms;
