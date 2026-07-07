@@ -886,3 +886,13 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     write /sys/block/sda/queue/nr_requests 256
     write /sys/block/sda/queue/iostats 0
     write /sys/block/dm-0/queue/read_ahead_kb 128
+
+    # Reducing the latency of the conversion task between core clusters (Cortex-A55 <-> A78)
+    write /proc/sys/kernel/sched_migration_cost_ns 150000
+
+    # Allow the scheduler to pack lightweight tasks into energy-efficient cores faster
+    write /proc/sys/kernel/sched_pelt_util_half_life_ms 16
+
+    # Increase the frequency threshold to maintain 120/144 Hz frames without drops
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/rate_limit_us 10000
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/rate_limit_us 20000
