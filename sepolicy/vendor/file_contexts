@@ -168,8 +168,8 @@
 /vendor/bin/hw/android\.hardware\.sensors-service\.xiaomi-multihal        u:object_r:hal_sensors_default_exec:s0
 
 #Audio
-/vendor/etc/aurisys_config(_hifi3)?\.xml                                                 u:object_r:custom_audio_config_file:s0
-/vendor/etc/usb_audio_(policy_configuration|accessory_only_policy_configuration)\.xml    u:object_r:custom_audio_config_file:s0
+#/vendor/etc/aurisys_config(_hifi3)?\.xml                                                 u:object_r:custom_audio_config_file:s0
+#/vendor/etc/usb_audio_(policy_configuration|accessory_only_policy_configuration)\.xml    u:object_r:custom_audio_config_file:s0
 #/vendor/etc/misound_res(_spk|_headphone)?\.bin                                           u:object_r:custom_audio_config_file:s0
 
 #NFC
