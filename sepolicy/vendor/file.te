@@ -64,3 +64,12 @@ type proc_walt, fs_type, proc_type;
 
 # Wlan
 type vendor_mac_vendor_data_file, data_file_type, file_type, mlstrustedobject;
+
+# Allow the ART compiler to read memory state
+allow artd proc_overcommit_memory:file r_file_perms;
+
+# Allow the crash debugger to read memory state
+allow crash_dump proc_overcommit_memory:file r_file_perms;
+
+# Allow the shell (shell/adb) to read this file
+allow shell proc_overcommit_memory:file r_file_perms;
