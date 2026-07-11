@@ -18,6 +18,13 @@ on init
     chown root system /proc/lk_env
     chmod 0660 /proc/lk_env
 
+on init
+   # Creating paths for the scheduler and power consumption limits (Schedtune/Cpuctl)
+    chown system system /dev/stune/foreground/tasks
+    chown system system /dev/stune/top-app/tasks
+    chmod 0664 /dev/stune/foreground/tasks
+    chmod 0664 /dev/stune/top-app/tasks
+
 # increase sysctl_rmem_max and sysctl_wmem_max values to 2M
     write /proc/sys/net/core/wmem_max 8388608
     write /proc/sys/net/core/rmem_max 8388608
@@ -294,9 +301,6 @@ on post-fs-data
 
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
-
-    #Fingerprint
-    chmod 0666 /dev/goodix_fp
 
     #vdec-fmt
     chmod 0660 /dev/vdec-fmt
@@ -675,6 +679,53 @@ on boot
     chown system system /sys/class/leds/red/trigger
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
+
+   # Grant the system suspend service and the power group full write and management rights
+    # for kernel sleep locks
+    chown system power /sys/power/wake_lock
+    chown system power /sys/power/wake_unlock
+    chmod 0664 /sys/power/wake_lock
+    chmod 0664 /sys/power/wake_unlock
+
+   # Read permissions for MediaTek battery nodes
+    chown system system /sys/devices/platform/battery/power_supply/battery
+    chown system system /sys/devices/platform/mt_charger/power_supply/ac
+    chown system system /sys/devices/platform/mt_charger/power_supply/usb
+
+    # Configuring permissions for character devices and under-display scanner paths
+    chown system system /dev/goodix_fp
+    chmod 0666 /dev/goodix_fp
+    chown system system /sys/devices/platform/fingerprint/clk_enable
+    chown system system /sys/devices/platform/fingerprint/irq
+    chown system system /sys/devices/platform/fingerprint/fingerdown_wait
+    chmod 0664 /sys/devices/platform/fingerprint/clk_enable
+    chmod 0664 /sys/devices/platform/fingerprint/irq
+
+  # Permissions for the touchscreen and display FOD overlay (eliminates micro-stutter)
+    chown system system /sys/devices/virtual/touch/touch_dev/fod_press_status
+    chown system system /sys/devices/virtual/mi_display/disp_feature/disp-DSI-0/disp_param
+    chmod 0664 /sys/devices/virtual/touch/touch_dev/fod_press_status
+    chmod 0664 /sys/devices/virtual/mi_display/disp_feature/disp-DSI-0/disp_param
+
+    # Configuration of MT6360 controller paths and fast-charging power chips (67W)
+    chown system system /sys/devices/platform/pd_adapter/Charging_Adapter/pd_adapter
+    chown system system /sys/devices/platform/xiaomi_charge/power_supply/battery/input_suspend
+    chown system system /sys/devices/platform/mt_charger/power_supply/usb/wakeup
+    chmod 0664 /sys/devices/platform/pd_adapter/Charging_Adapter/pd_adapter
+    chmod 0664 /sys/devices/platform/xiaomi_charge/power_supply/battery/input_suspend
+
+     # Allow modification of Mali GPU frequency operating periods
+    chown system system /sys/devices/platform/13000000.mali/js_ctx_scheduling_mode
+    chown system system /sys/devices/platform/13000000.mali/js_scheduling_period
+    chown system system /sys/devices/platform/13000000.mali/dvfs_period
+    chmod 0664 /sys/devices/platform/13000000.mali/js_ctx_scheduling_mode
+    chmod 0664 /sys/devices/platform/13000000.mali/js_scheduling_period
+    chmod 0664 /sys/devices/platform/13000000.mali/dvfs_period
+
+    # MediaTek AAL auto-brightness service node
+    chown system graphics /dev/mtk_disp_mgr
+    chmod 0660 /dev/mtk_disp_mgr
+
       # Fast Storage & Memory Configuration
     write /sys/block/zram0/comp_algorithm lz4
     write /sys/block/zram0/disksize 4294967296

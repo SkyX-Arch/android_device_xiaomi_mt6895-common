@@ -4,3 +4,5 @@ allow hal_thermal_default vendor_configs_file:dir r_dir_perms;
 allow hal_thermal_default vendor_configs_file:file r_file_perms;
 allow hal_thermal_default vendor_task_profiles_file:dir r_dir_perms;
 allow hal_thermal_default vendor_task_profiles_file:file r_file_perms;
+allow hal_thermal_default sysfs_batteryinfo:file r_file_perms;
+allow hal_thermal_default sysfs_batteryinfo:dir search;

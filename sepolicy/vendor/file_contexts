@@ -285,8 +285,9 @@
 /vendor/lib(64)?/vendor\.xiaomi\.hardware\.campostproc@1\.[0-9]\.so       u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor\.xiaomi\.hardware\.misys@.*\.so                   u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor\.xiaomi\.hardware\.quickcamera-V1-ndk\.so          u:object_r:same_process_hal_file:s0
+/dev/mtk_aal_blk.*                                                         u:object_r:graphics_device:s0
 
-# Реализация ISP HAL от MediaTek
+# Implementation of ISP HAL from MediaTek
 /vendor/lib(64)?/hw/vendor\.mediatek\.hardware\.camera\.isphal@1\.1-impl\.so u:object_r:vendor_file:s0
 
 # Xiaomi service implementations (MiSys, DisplayFeature)

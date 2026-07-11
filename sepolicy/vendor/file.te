@@ -73,3 +73,6 @@ allow crash_dump proc_overcommit_memory:file r_file_perms;
 
 # Allow the shell (shell/adb) to read this file
 allow shell proc_overcommit_memory:file r_file_perms;
+
+#GPU
+type vendor_sysfs_gpu, fs_type, sysfs_type;
