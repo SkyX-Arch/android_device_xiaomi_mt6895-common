@@ -9,4 +9,4 @@ allow hal_aal_default vendor_display_config_file:file r_file_perms;
 allow hal_aal_default vendor_sysfs_displayfeature:dir r_dir_perms;
 allow hal_aal_default vendor_sysfs_displayfeature:file r_file_perms;
 allow hal_aal_default graphics_device:chr_file { read write open ioctl };
-allowxperm hal_aal_default graphics_device:chr_file ioctl { 0x4402 0x4403 0x4406 0x4407 };
+allowxperm hal_aal_default graphics_device:chr_file ioctl { 0x4400-0x44ff 0x4600-0x46ff };
