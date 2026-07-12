@@ -58,6 +58,7 @@ BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 bootconfig
 BOARD_KERNEL_CMDLINE += cgroup_disable=memory
 BOARD_KERNEL_CMDLINE += log_buf_len=1024K
 BOARD_BOOTCONFIG += androidboot.serialconsole=0
+OVERRIDE_ENABLE_UFFD_GC := false
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
