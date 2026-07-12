@@ -284,14 +284,23 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libperfmgr-ext-xiaomi)
 
-# Dex
+# Dex Optimization Framework
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
-PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
-DONT_DEXPREOPT_PREBUILTS := false
 
-# Dex - Debug
+# Controls the optimization level for system apps.
+# 'speed-profile' uses cloud/execution profiles to compile only heavily used code,
+# significantly reducing output image size compared to 'everything' while keeping UI smooth.
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+
+# Disable generation of redundant .dm (Dex Metadata) files to save additional space
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := false
+
+# Skip dexpreopt for precompiled third-party APKs to avoid redundant code bloat
+DONT_DEXPREOPT_PREBUILTS := true
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
+# Dex - Debug Targets Isolation
 ART_BUILD_TARGET_NDEBUG := true
 ART_BUILD_TARGET_DEBUG := false
 ART_BUILD_HOST_NDEBUG := true
@@ -300,13 +309,13 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 USE_DEX2OAT_DEBUG := false
 
-# Dex - Apps
+# Core System Packages - Enforce maximum AOT compilation for critical UI performance
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
     TrebuchetQuickStep \
     Settings
 
-#Gapps optimization is enabled only if they are physically present in the assembly
+# Google Services Framework Optimization (if present in the build tree)
 ifneq ($(wildcard vendor/gapps/),)
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     PrebuiltGmsCore \
