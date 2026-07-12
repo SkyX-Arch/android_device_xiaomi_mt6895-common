@@ -18,7 +18,7 @@ allow hal_graphics_composer_default vendor_sysfs_displayfeature:dir { open read 
 allow hal_graphics_composer_default vendor_sysfs_displayfeature:file { open read write };
 allow hal_graphics_composer_server vendor_hal_hwcextension_xiaomi_service:service_manager { add find };
 allow hal_graphics_composer_default graphics_device:chr_file { read write open ioctl };
-allowxperm hal_graphics_composer_default graphics_device:chr_file ioctl { 0x4400-0x44ff };
+allowxperm hal_graphics_composer_default graphics_device:chr_file ioctl { 0x4402 0x4403 0x4406 0x4407 };
 allow hal_graphics_composer_default vendor_displayfeature_device:chr_file r_file_perms;
 # Allow access to AI PQ model files
 allow hal_graphics_composer_default vendor_configs_file:file { read open getattr map };
